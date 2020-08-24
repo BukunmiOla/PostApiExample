@@ -43,7 +43,7 @@ import retrofit2.Response;
 
      private void showNames() {
          DataService service =
-                 ClientInstance.getClientInstance("http://hello2harvest.herokuapp.com")
+                 ClientInstance.getClientInstance()
                  .create(DataService.class);
 
          Call<List<NameResponse>> call = service.getNames();

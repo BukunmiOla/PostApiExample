@@ -13,16 +13,16 @@ public class ClientInstance {
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
         logging.level(HttpLoggingInterceptor.Level.BODY);
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
-        httpClient.connectTimeout(30, TimeUnit.SECONDS);
-        httpClient.readTimeout(30, TimeUnit.SECONDS);
-        httpClient.writeTimeout(30, TimeUnit.SECONDS);
+//        httpClient.connectTimeout(30, TimeUnit.SECONDS);
+//        httpClient.readTimeout(30, TimeUnit.SECONDS);
+//        httpClient.writeTimeout(30, TimeUnit.SECONDS);
         httpClient.addInterceptor(logging);
         return httpClient.build();
     }
 
-    public static Retrofit getClientInstance(String baseURL) {
+    public static Retrofit getClientInstance() {
         return new Retrofit.Builder()
-                .baseUrl(baseURL)
+                .baseUrl("http://hello2harvest.herokuapp.com")
                 .client(getHttpClient())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
