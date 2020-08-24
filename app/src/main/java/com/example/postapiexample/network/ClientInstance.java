@@ -13,9 +13,9 @@ public class ClientInstance {
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
         logging.level(HttpLoggingInterceptor.Level.BODY);
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
-//        httpClient.connectTimeout(30, TimeUnit.SECONDS);
-//        httpClient.readTimeout(30, TimeUnit.SECONDS);
-//        httpClient.writeTimeout(30, TimeUnit.SECONDS);
+        httpClient.connectTimeout(30, TimeUnit.SECONDS);
+        httpClient.readTimeout(30, TimeUnit.SECONDS);
+        httpClient.writeTimeout(30, TimeUnit.SECONDS);
         httpClient.addInterceptor(logging);
         return httpClient.build();
     }

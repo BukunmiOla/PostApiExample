@@ -8,26 +8,26 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.postapiexample.R;
-import com.example.postapiexample.model.NameResponse;
+import com.example.postapiexample.model.DetailResponse;
 
 import java.util.List;
 
-public class NameAdapter extends RecyclerView.Adapter<NameViewHolder> {
-    List<NameResponse> nameLists;
-    public NameAdapter(List<NameResponse> nameLists) {
+public class DetailAdapter extends RecyclerView.Adapter<DetailViewHolder> {
+    List<DetailResponse> nameLists;
+    public DetailAdapter(List<DetailResponse> nameLists) {
         this.nameLists = nameLists;
     }
 
     @NonNull
     @Override
-    public NameViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public DetailViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_model, parent,false);
-        return new NameViewHolder(view);
+        return new DetailViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull NameViewHolder holder, int position) {
-        final NameResponse name = nameLists.get(position);
+    public void onBindViewHolder(@NonNull DetailViewHolder holder, int position) {
+        final DetailResponse name = nameLists.get(position);
         holder.bind(name);
     }
 
