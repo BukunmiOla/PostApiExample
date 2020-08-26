@@ -71,11 +71,6 @@ public class GetDataActivity extends AppCompatActivity {
             public void onSelectName(DetailResponse detail) {
                 Intent showInformation = new Intent(GetDataActivity.this, InfoActivity.class);
                 showInformation.putExtra("id", detail.getId());
-                showInformation.putExtra("name", detail.getName());
-                showInformation.putExtra("address", detail.getAddress());
-                showInformation.putExtra("email", detail.getEmail());
-                showInformation.putExtra("phone", detail.getPhoneNumber());
-                showInformation.putExtra("gender", detail.getGender());
                 startActivity(showInformation);
 
             }

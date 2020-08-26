@@ -2,7 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    style="@style/bodyStyle"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     tools:context=".PostDataActivity">
 
     <LinearLayout
@@ -16,7 +17,9 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            style="@style/inputStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
             android:text="@string/new_entry"
             android:textAlignment="center"
             android:textSize="20sp"
@@ -25,7 +28,9 @@
 
         <EditText
             android:id="@+id/new_name_et"
-            style="@style/inputStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
             android:backgroundTint="#fff"
             android:ems="10"
             android:hint="@string/enter_name"
@@ -33,7 +38,9 @@
 
         <EditText
             android:id="@+id/new_email_et"
-            style="@style/inputStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
             android:backgroundTint="#fff"
             android:ems="10"
             android:hint="@string/enter_email"
@@ -41,7 +48,8 @@
 
         <EditText
             android:id="@+id/new_address_et"
-            style="@style/inputStyle"
+            android:layout_width="match_parent"
+            android:layout_marginTop="15dp"
             android:backgroundTint="#fff"
             android:layout_height="150dp"
             android:ems="10"
@@ -50,7 +58,9 @@
 
         <EditText
             android:id="@+id/new_phone_et"
-            style="@style/inputStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
             android:backgroundTint="#fff"
             android:ems="10"
             android:hint="@string/phone_hint"
@@ -58,7 +68,9 @@
 
         <Spinner
             android:id="@+id/new_gender_sp"
-            style="@style/inputStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
             android:ems="10"
             android:padding="10dp"
             android:background="@drawable/spinner_bg"
@@ -70,7 +82,12 @@
 
     <Button
         android:id="@+id/post_btn"
-        style="@style/buttonStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_bg"
+        android:textColor="#fff"
+        android:textStyle="bold"
+        android:textSize="20sp"
         android:text="@string/post"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/linearLayout"

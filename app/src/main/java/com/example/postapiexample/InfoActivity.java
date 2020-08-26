@@ -27,6 +27,7 @@ public class InfoActivity extends AppCompatActivity {
 
         Intent getInfo = getIntent();
         String id = getInfo.getExtras().getString("id");
+
         String name = getInfo.getExtras().getString("name");
         String address = getInfo.getExtras().getString("address");
         String email = getInfo.getExtras().getString("email");
@@ -43,36 +44,36 @@ public class InfoActivity extends AppCompatActivity {
 
         detailTv.setText(detail);
 
-//        DataService service =
-//                ClientInstance.getClientInstance()
-//                        .create(DataService.class);
-//
-//        Call<DetailResponse> call = service.getById(id);
-//        call.enqueue(new Callback<DetailResponse>() {
-//            @Override
-//            public void onResponse(Call<DetailResponse> call, Response<DetailResponse> response) {
-//                Toast.makeText(InfoActivity.this, "Connected", Toast.LENGTH_SHORT);
-//                if (response.body() != null)
-//                generateData(response.body());
-//            }
-//
-//            @Override
-//            public void onFailure(Call<DetailResponse> call, Throwable t) {
-//                Toast.makeText(InfoActivity.this, "Something went wrong...", Toast.LENGTH_SHORT);
-//
-//            }
-//        });
-//    }
-//
-//    private void generateData(DetailResponse body) {
-//        TextView detailTv = findViewById(R.id.detail_tv);
-//        TextView nameTv = findViewById(R.id.name_tv);
-//        nameTv.setText(body.getName());
-//        String detail = "id: " + body.getId() +"Address: " + body.getAddress() +
-//                "\nEmail: " + body.getEmail() +
-//                "\nPhone number: " + body.getPhoneNumber() +
-//                "\nGender: " + body.getGender();
-//
-//        detailTv.setText(detail);
+        DataService service =
+                ClientInstance.getClientInstance()
+                        .create(DataService.class);
+
+        Call<DetailResponse> call = service.getById(id);
+        call.enqueue(new Callback<DetailResponse>() {
+            @Override
+            public void onResponse(Call<DetailResponse> call, Response<DetailResponse> response) {
+                Toast.makeText(InfoActivity.this, "Connected", Toast.LENGTH_SHORT);
+                if (response.body() != null)
+                generateData(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<DetailResponse> call, Throwable t) {
+                Toast.makeText(InfoActivity.this, "Something went wrong...", Toast.LENGTH_SHORT);
+
+            }
+        });
+    }
+
+    private void generateData(DetailResponse body) {
+        TextView detailTv = findViewById(R.id.detail_tv);
+        TextView nameTv = findViewById(R.id.name_tv);
+        nameTv.setText(body.getName());
+        String detail = "id: " + body.getId() +"Address: " + body.getAddress() +
+                "\nEmail: " + body.getEmail() +
+                "\nPhone number: " + body.getPhoneNumber() +
+                "\nGender: " + body.getGender();
+
+        detailTv.setText(detail);
     }
 }
