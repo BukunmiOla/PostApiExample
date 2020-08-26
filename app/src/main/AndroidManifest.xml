@@ -14,7 +14,7 @@
         android:usesCleartextTraffic="true" >
         <activity android:name=".InfoActivity" >
         </activity>
-        <activity android:name=".ui.PostDataActivity" />
+        <activity android:name=".PostDataActivity" />
         <activity android:name=".ui.GetDataActivity" />
         <activity android:name=".MainActivity" >
             <intent-filter>

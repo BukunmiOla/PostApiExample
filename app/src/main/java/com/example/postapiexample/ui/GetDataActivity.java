@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import com.example.postapiexample.MainActivity;
 import com.example.postapiexample.R;
 import com.example.postapiexample.model.DetailResponse;
 import com.example.postapiexample.network.ClientInstance;
@@ -32,6 +31,9 @@ public class GetDataActivity extends AppCompatActivity {
     }
 
     private void showNames() {
+
+        final NameSelectionListener listener = new NameSelectionListener();
+
         DataService service =
                 ClientInstance.getClientInstance()
                         .create(DataService.class);
@@ -43,7 +45,7 @@ public class GetDataActivity extends AppCompatActivity {
                 Toast.makeText(GetDataActivity.this, "Connected", Toast.LENGTH_SHORT);
                 DetailAdapter adapter = new DetailAdapter(response.body());
                 displayRv.setLayoutManager(new LinearLayoutManager(GetDataActivity.this));
-                displayRv.setAdapter(adapter);
+                displayRv.setAdapter(adapter,listener);
             }
 
             @Override

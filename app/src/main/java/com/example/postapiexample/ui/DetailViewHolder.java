@@ -18,13 +18,6 @@ public class DetailViewHolder extends RecyclerView.ViewHolder {
 
     public void bind(DetailResponse name) {
         nameTv = itemView.findViewById(R.id.name_tv);
-        detailTv = itemView.findViewById(R.id.detail_tv);
         nameTv.setText(name.getName());
-        String detail = "Address: " + name.getAddress().toString() +
-                "\nEmail: " + name.getEmail().toString() +
-                "\nPhone number: " + name.getPhoneNumber().toString() +
-                "\nGender: " + name.getGender().toString();
-
-        detailTv.setText(detail);
     }
 }

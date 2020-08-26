@@ -1,4 +1,4 @@
-package com.example.postapiexample.ui;
+package com.example.postapiexample;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,7 +8,6 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.example.postapiexample.R;
 import com.example.postapiexample.model.DetailRequest;
 import com.example.postapiexample.network.ClientInstance;
 import com.example.postapiexample.network.DataService;
