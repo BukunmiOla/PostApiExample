@@ -16,5 +16,16 @@
         <item name="android:textSize">20sp</item>
 
     </style>
+    <style name="bodyStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">#00c5c5</item>
+
+    </style>
+    <style name="inputStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">15dp</item>
+    </style>
 
 </resources>

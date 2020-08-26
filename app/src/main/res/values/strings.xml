@@ -1,6 +1,11 @@
 <resources>
     <string name="app_name">PostApiExample</string>
     <string name="new_entry">Create new Entry</string>
+    <string name="post">Post</string>
+    <string name="phone_hint">+234....</string>
+    <string name="enter_address">Enter Address...</string>
+    <string name="enter_email">Enter email...</string>
+    <string name="enter_name">Enter Name...</string>
     <string-array name="gender">
         <item>Select gender</item>
         <item>Female</item>
