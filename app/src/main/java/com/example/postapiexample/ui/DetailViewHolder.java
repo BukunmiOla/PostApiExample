@@ -13,11 +13,12 @@ public class DetailViewHolder extends RecyclerView.ViewHolder {
     TextView nameTv, detailTv;
     public DetailViewHolder(@NonNull View itemView) {
         super(itemView);
+        nameTv = itemView.findViewById(R.id.name_tv);
+
     }
 
 
     public void bind(DetailResponse name) {
-        nameTv = itemView.findViewById(R.id.name_tv);
         nameTv.setText(name.getName());
     }
 }

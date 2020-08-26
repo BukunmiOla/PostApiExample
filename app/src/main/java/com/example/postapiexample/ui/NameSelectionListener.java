@@ -1,5 +1,7 @@
 package com.example.postapiexample.ui;
 
-public interface NameSelectionListener {
+import com.example.postapiexample.model.DetailResponse;
 
+public interface NameSelectionListener {
+    void onSelectName(DetailResponse detail);
 }

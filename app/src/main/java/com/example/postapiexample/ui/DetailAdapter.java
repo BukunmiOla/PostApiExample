@@ -14,8 +14,11 @@ import java.util.List;
 
 public class DetailAdapter extends RecyclerView.Adapter<DetailViewHolder> {
     List<DetailResponse> nameLists;
-    public DetailAdapter(List<DetailResponse> nameLists) {
-        this.nameLists = nameLists;
+    NameSelectionListener listener;
+
+    public DetailAdapter(List<DetailResponse> body, NameSelectionListener listener) {
+        this.nameLists = body;
+        this.listener = listener;
     }
 
     @NonNull
@@ -27,12 +30,19 @@ public class DetailAdapter extends RecyclerView.Adapter<DetailViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull DetailViewHolder holder, int position) {
-        final DetailResponse name = nameLists.get(position);
+        final DetailResponse name =nameLists.get(position);
         holder.bind(name);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                listener.onSelectName(name);
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
-        return nameLists!=null? nameLists.size():0;
+        return nameLists !=null? nameLists.size():0;
     }
+
 }

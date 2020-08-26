@@ -4,13 +4,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.example.postapiexample.InfoActivity;
 import com.example.postapiexample.R;
 import com.example.postapiexample.model.DetailResponse;
 import com.example.postapiexample.network.ClientInstance;
 import com.example.postapiexample.network.DataService;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
@@ -20,6 +24,7 @@ import retrofit2.Response;
 
 public class GetDataActivity extends AppCompatActivity {
     RecyclerView displayRv;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,8 +37,6 @@ public class GetDataActivity extends AppCompatActivity {
 
     private void showNames() {
 
-        final NameSelectionListener listener = new NameSelectionListener();
-
         DataService service =
                 ClientInstance.getClientInstance()
                         .create(DataService.class);
@@ -43,9 +46,7 @@ public class GetDataActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<DetailResponse>> call, Response<List<DetailResponse>> response) {
                 Toast.makeText(GetDataActivity.this, "Connected", Toast.LENGTH_SHORT);
-                DetailAdapter adapter = new DetailAdapter(response.body());
-                displayRv.setLayoutManager(new LinearLayoutManager(GetDataActivity.this));
-                displayRv.setAdapter(adapter,listener);
+                generateData(response.body());
             }
 
             @Override
@@ -55,4 +56,30 @@ public class GetDataActivity extends AppCompatActivity {
             }
         });
     }
+
+    private void generateData(List<DetailResponse> response) {
+        final NameSelectionListener listener = attachListener();
+        DetailAdapter adapter = new DetailAdapter(response,listener);
+        displayRv.setLayoutManager(new LinearLayoutManager(GetDataActivity.this));
+        displayRv.setAdapter(adapter);
+    }
+
+    @NotNull
+    private NameSelectionListener attachListener() {
+        return new NameSelectionListener() {
+            @Override
+            public void onSelectName(DetailResponse detail) {
+                Intent showInformation = new Intent(GetDataActivity.this, InfoActivity.class);
+                showInformation.putExtra("id", detail.getId());
+                showInformation.putExtra("name", detail.getName());
+                showInformation.putExtra("address", detail.getAddress());
+                showInformation.putExtra("email", detail.getEmail());
+                showInformation.putExtra("phone", detail.getPhoneNumber());
+                showInformation.putExtra("gender", detail.getGender());
+                startActivity(showInformation);
+
+            }
+        };
+    }
+
 }
