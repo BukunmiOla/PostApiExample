@@ -44,6 +44,33 @@ public class InfoActivity extends AppCompatActivity {
             }
         });
 
+        findViewById(R.id.delete_btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                deleteEntry(id);
+            }
+        });
+
+    }
+
+    private void deleteEntry(String id) {
+        DataService service =
+                ClientInstance.getClientInstance()
+                        .create(DataService.class);
+
+        Call<DetailResponse> call = service.deleteById(id);
+        call.enqueue(new Callback<DetailResponse>() {
+            @Override
+            public void onResponse(Call<DetailResponse> call, Response<DetailResponse> response) {
+                Toast.makeText(InfoActivity.this, "Deleted", Toast.LENGTH_SHORT);
+            }
+
+            @Override
+            public void onFailure(Call<DetailResponse> call, Throwable t) {
+                Toast.makeText(InfoActivity.this, "Something went wrong...", Toast.LENGTH_SHORT);
+
+            }
+        });
     }
 
     private void updateData(String id) {
@@ -59,7 +86,7 @@ public class InfoActivity extends AppCompatActivity {
         call.enqueue(new Callback<DetailResponse>() {
             @Override
             public void onResponse(Call<DetailResponse> call, Response<DetailResponse> response) {
-                Toast.makeText(InfoActivity.this, "Connected", Toast.LENGTH_SHORT);
+                Toast.makeText(InfoActivity.this, "Updated", Toast.LENGTH_SHORT);
 
 
             }

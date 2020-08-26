@@ -7,6 +7,7 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
@@ -24,4 +25,10 @@ public interface DataService {
 
     @PUT("/tasks/{id}")
     Call<DetailResponse> updateById(@Path("id") String id, @Body DetailRequest detailRequest);
+
+    @DELETE("/tasks/{id}")
+    Call<DetailResponse> deleteById(@Path("id") String id);
+
+    @DELETE("/tasks")
+    Call<List<DetailResponse>> deleteAll();
 }

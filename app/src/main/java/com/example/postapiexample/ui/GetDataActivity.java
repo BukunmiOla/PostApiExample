@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import com.example.postapiexample.InfoActivity;
@@ -33,6 +34,33 @@ public class GetDataActivity extends AppCompatActivity {
 
         displayRv = findViewById(R.id.recyclerView);
         showNames();
+
+        findViewById(R.id.delete_all_btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                deleteAll();
+            }
+        });
+    }
+
+    private void deleteAll() {
+        DataService service =
+                ClientInstance.getClientInstance()
+                        .create(DataService.class);
+
+        Call<List<DetailResponse>> call = service.deleteAll();
+        call.enqueue(new Callback<List<DetailResponse>>() {
+            @Override
+            public void onResponse(Call<List<DetailResponse>> call, Response<List<DetailResponse>> response) {
+                Toast.makeText(GetDataActivity.this, "Deleted", Toast.LENGTH_SHORT);
+            }
+
+            @Override
+            public void onFailure(Call<List<DetailResponse>> call, Throwable t) {
+                Toast.makeText(GetDataActivity.this, "Something went wrong...", Toast.LENGTH_SHORT);
+
+            }
+        });
     }
 
     private void showNames() {
