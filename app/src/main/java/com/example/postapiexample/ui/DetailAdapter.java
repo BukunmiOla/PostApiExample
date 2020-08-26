@@ -31,13 +31,8 @@ public class DetailAdapter extends RecyclerView.Adapter<DetailViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull DetailViewHolder holder, int position) {
         final DetailResponse name =nameLists.get(position);
-        holder.bind(name);
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                listener.onSelectName(name);
-            }
-        });
+        holder.bind(name,listener);
+
     }
 
     @Override
