@@ -28,7 +28,7 @@
       android:textColor="#fff"
       android:padding="10dp"
       android:layout_marginTop="10dp"
-      android:text="Delete All"
+      android:text="Delete"
       app:layout_constraintEnd_toEndOf="@+id/textView"
       app:layout_constraintTop_toBottomOf="@+id/textView" />
 
